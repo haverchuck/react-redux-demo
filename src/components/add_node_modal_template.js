@@ -3,36 +3,26 @@ import TextField from '../../node_modules/material-ui/TextField';
 import SelectField from '../../node_modules/material-ui/SelectField';
 import MenuItem from '../../node_modules/material-ui/MenuItem';
 
-class UserModalTemplate extends Component {
+class AddNodeModalTemplate extends Component {
 
   constructor(props){
     super(props);
     this.state = {
-      name: '',
-      org: ''
+      title: ''
     }
     this.processChange = this.processChange.bind(this);
-    this.handleName = this.handleName.bind(this);
     this.handleSelection = this.handleSelection.bind(this);
   }
 
-  processChange = () => {
-    this.props.action({name: this.state.name, org: this.state.org});
-  }
-
-  //TODO: investigate why this.setState was not working in below functions
-  handleName = (e, val) => {
-    if (val !== this.state.name) {
-      this.state.name = val
-      this.processChange()
-    }
+  processChange = (node) => {
+    this.props.action({rowInfo: this.props.rowInfo, newNode: node});
   }
 
   handleSelection = (e, index, val) => {
-    if (val !== this.state.org) {
-      this.setState({org: val})
-      this.state.org = val;
-      this.processChange()
+    if (val !== this.state.title) {
+      this.setState({title: val})
+      this.state.title = val;
+      this.processChange(this.state)
     }
   }
 
@@ -44,16 +34,10 @@ class UserModalTemplate extends Component {
 
     return (
       <div>
-        <TextField
-          hintText="User Name"
-          floatingLabelText="Enter User Name"
-          ref="name"
-          onChange={this.handleName}
-        /><br/>
         <SelectField
-          value={this.state.org}
-          floatingLabelText="Select User Organization"
-          ref="org"
+          value={this.state.title}
+          floatingLabelText="Select Account"
+          ref="title"
           onChange={this.handleSelection}
         >
         {availableAccounts}
@@ -64,4 +48,4 @@ class UserModalTemplate extends Component {
 }
 
 
-export default UserModalTemplate;
+export default AddNodeModalTemplate;

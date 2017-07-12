@@ -25,21 +25,20 @@ class Users extends Component {
 
   constructor(props){
     super(props);
-    this.onClickAdd = this.onClickAdd.bind(this);
     this.state = {
       users: this.props.users,
       headers: ['name', 'org'],
     }
   }
 
-  onClickAdd(item){
-    this.props.addItem(item);
-  }
+  // onClickAdd(item){
+  //   this.props.addItem(item);
+  // }
 
   render() {
     return (
       <div style={styles.wrapper}>
-        <DynamicModal style={styles.userButton} label="Add User" title="Define New User" submission={this.props.action.addToUsers} template="addUser" />
+        <DynamicModal style={styles.userButton} label="Add User" title="Define New User" submission={this.props.action.addToUsers} template="addUser" selectValues={this.props.accounts}/>
         <DynamicTable headers={this.state.headers} rows={this.props.users}/>
       </div>
     )
@@ -47,7 +46,8 @@ class Users extends Component {
 }
 function mapStateToProps(state, props) {
   return {
-    users: state.users
+    users: state.users,
+    accounts: state.accounts
   }
 }
 

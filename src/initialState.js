@@ -43,8 +43,14 @@ const initialState = {
       name: 'Arya',
       org: 'House Stark'
     }
-
-  ]
+  ],
+  treeData: [
+    { 
+      title: 'Org One', 
+      expanded: true,
+      children: []
+    }
+  ],
 }
 
 export default initialState;

@@ -1,7 +1,7 @@
-export const addNode = (node) => {
-  console.log('adding node', node);
+export const updateTree = (treeData) => {
+  console.log('adding node', treeData);
   return {
     type: 'addNode',
-    node
+    treeData
   }
 }

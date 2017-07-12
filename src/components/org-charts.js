@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SortableTree from 'react-sortable-tree';
+import { removeNodeAtPath, getNodeAtPath, addNodeUnderParent } from 'react-sortable-tree';
+import RaisedButton from 'material-ui/RaisedButton';
+import DynamicModal from './modal_container'
 import * as OrgChartActions from '../actions/org-charts';
 
 
@@ -10,26 +13,69 @@ const styles = {
     'margin-top': '5%',
     'margin-left': '20%',
     'margin-right': '20%',
-  }
+  },
+  innerStyle: {
+    'padding-left': 200,
+    'padding-right': 200
+  },
+  addButton: {
+    float:'left',
+    'margin-left': -25
+  },
 };
 
 class OrgCharts extends Component {
 
     constructor(props) {
         super(props);
- 
         this.state = {
-            treeData: [{ title: 'Chicken', children: [ { title: 'Egg' } ] }],
-        };
+          treeData: this.props.treeData
+        }
+        this.removeNode = this.removeNode.bind(this);
+        this.addNode = this.addNode.bind(this);
     }
+
+    removeNode = (rowInfo) => {
+      let {node, treeIndex, path} = rowInfo;
+      let tempTreeData = removeNodeAtPath({
+        treeData: this.state.treeData,
+        path: path,   // You can use path from here
+        getNodeKey: ({node: TreeNode, treeIndex: number}) => {
+        // console.log(number);
+          return number;
+        },
+        ignoreCollapsed: false,
+      })
+      this.props.action.addNode(tempTreeData);
+    }
+
+    addNode = (item) => {   
+      let {node, treeIndex, path} = item.rowInfo;
+      let newNode = item.newNode;
+
+      node.children.push(newNode)
+      this.setState(this.state.treeData)
+      this.props.action.updateTree(this.state.treeData)
+      }
  
     render() {
         return (
           <div style={styles.wrapper}>
             <div style={{ height: 400 }}>
                 <SortableTree
+                    innerStyle={styles.innerStyle}
                     treeData={this.state.treeData}
                     onChange={treeData => this.setState({ treeData })}
+                     generateNodeProps={rowInfo => ({
+                        buttons: [
+                            <div>
+                              <DynamicModal style={styles.addButton} label="Add" title="Add Account to Org" submission={this.addNode} template='selectAccountForNode' selectValues={this.props.accounts} rowInfo={rowInfo} />
+                            </div>
+                        ],
+                        style: {
+                          height: '50px',
+                        }
+                      })}
                 />
             </div>
           </div>
@@ -39,7 +85,9 @@ class OrgCharts extends Component {
 }
 function mapStateToProps(state) {
   return {
-    accounts: state.accounts
+    accounts: state.accounts,
+    users: state.users,
+    treeData: state.treeData
   }
 }
 

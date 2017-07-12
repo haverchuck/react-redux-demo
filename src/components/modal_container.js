@@ -11,6 +11,7 @@ import AccountModalTemplate from './account_modal_template';
 import * as AccountActions from '../actions/accounts';
 import UserModalTemplate from './user_modal_template';
 import * as UserActions from '../actions/users';
+import AddNodeModalTemplate from './add_node_modal_template';
 
 class DynamicModal extends Component {
 
@@ -24,8 +25,10 @@ class DynamicModal extends Component {
         template = <AccountModalTemplate action={this.setItem}/>
         break;
       case 'addUser':
-        template = <UserModalTemplate action={this.setItem}/>
+        template = <UserModalTemplate action={this.setItem} selectValues={this.props.selectValues} />
         break;
+      case 'selectAccountForNode':
+        template= <AddNodeModalTemplate action={this.setItem} selectValues={this.props.selectValues} rowInfo={this.props.rowInfo} />
     }
 
     this.state = {
