@@ -1,0 +1,14 @@
+/* Nav */
+
+nav-menu {
+  background-color: #0F3E7B;
+}
+
+/* END Nav */
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
