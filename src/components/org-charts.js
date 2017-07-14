@@ -6,6 +6,7 @@ import { removeNodeAtPath, getNodeAtPath, addNodeUnderParent } from 'react-sorta
 import RaisedButton from 'material-ui/RaisedButton';
 import DynamicModal from './modal_container'
 import * as OrgChartActions from '../actions/org-charts';
+import _ from 'lodash';
 
 
 const styles = {
@@ -49,11 +50,18 @@ class OrgCharts extends Component {
       this.props.action.addNode(tempTreeData);
     }
 
+    // tree library seems to have helper functions for this, but they were giving me trouble.  this function might help with more sophisticated parsing needed later. still testing.
+    
     addNode = (item) => {   
       let {node, treeIndex, path} = item.rowInfo;
       let newNode = item.newNode;
 
-      node.children.push(newNode)
+      if (!node.children){
+        node.children = [newNode]
+      } else {
+        node.children.push(newNode)
+      }
+
       this.setState(this.state.treeData)
       this.props.action.updateTree(this.state.treeData)
       }
