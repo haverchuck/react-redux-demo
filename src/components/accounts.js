@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types'
-import DynamicGridList from './gridlist_container';
+import DynamicGridList from './containers/gridlist_container';
 import DynamicModal from './containers/modal_container'
 import * as AccountActions from '../actions/accounts';
 import Puppies from '../images/puppies.jpg';
@@ -31,13 +31,6 @@ class Accounts extends Component {
   componentDidMount() {
     this.props.action.fetchAccountsIfNeeded();
   }
-
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.selectedSubreddit !== prevProps.selectedSubreddit) {
-  //     const { dispatch, selectedSubreddit } = this.props
-  //     dispatch(fetchPostsIfNeeded(selectedSubreddit))
-  //   }
-  // }
 
   render() {
     return (

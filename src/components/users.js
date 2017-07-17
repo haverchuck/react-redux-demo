@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import DynamicModal from './containers/modal_container';
-import DynamicTable from './table_container';
+import DynamicTable from './containers/table_container';
 import * as UserActions from '../actions/users';
 
 const styles = {
