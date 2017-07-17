@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import DynamicModal from './modal_container';
+import DynamicModal from './containers/modal_container';
 import DynamicTable from './table_container';
 import * as UserActions from '../actions/users';
 
@@ -30,10 +30,6 @@ class Users extends Component {
       headers: ['name', 'org'],
     }
   }
-
-  // onClickAdd(item){
-  //   this.props.addItem(item);
-  // }
 
   render() {
     return (

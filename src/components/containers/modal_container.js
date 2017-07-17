@@ -7,11 +7,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
 /* modal content templates and actions */
-import AccountModalTemplate from './account_modal_template';
-import * as AccountActions from '../actions/accounts';
-import UserModalTemplate from './user_modal_template';
-import * as UserActions from '../actions/users';
-import AddNodeModalTemplate from './add_node_modal_template';
+import AccountModalTemplate from '../templates/account_modal_template';
+import * as AccountActions from '../../actions/accounts';
+import UserModalTemplate from '../templates/user_modal_template';
+import * as UserActions from '../../actions/users';
+import AddNodeModalTemplate from '../templates/add_node_modal_template';
 
 class DynamicModal extends Component {
 

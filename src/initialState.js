@@ -6,28 +6,30 @@ import stark from './images/stark.png';
 
 
 const initialState = {
+  isFetching: false,
+  didInvalidate: false,
   accounts: [
-    {
-      id: 1,
-      name: 'GlobeEx Corporation',
-      type: 'Corporation',
-      img: globex,
-    }, {
-      id: 2,
-      name: 'Illuminati',
-      type: 'Shadowy Monolithic Conspiracy',
-      img: illuminati,
-    }, {
-      id: 3,
-      name: 'Stark',
-      type: 'Great House',
-      img: stark,
-    }, {
-      id: 4,
-      name: 'Yakuza',
-      type: 'Criminal Enterprise',
-      img: yakuza,
-    }
+    // {
+    //   id: 1,
+    //   name: 'GlobeEx Corporation',
+    //   type: 'Corporation',
+    //   img: globex,
+    // }, {
+    //   id: 2,
+    //   name: 'Illuminati',
+    //   type: 'Shadowy Monolithic Conspiracy',
+    //   img: illuminati,
+    // }, {
+    //   id: 3,
+    //   name: 'Stark',
+    //   type: 'Great House',
+    //   img: stark,
+    // }, {
+    //   id: 4,
+    //   name: 'Yakuza',
+    //   type: 'Criminal Enterprise',
+    //   img: yakuza,
+    // }
   ],
   users: [
     {

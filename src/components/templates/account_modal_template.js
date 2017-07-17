@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TextField from '../../node_modules/material-ui/TextField';
+import TextField from '../../../node_modules/material-ui/TextField';
 
 class AccountModalTemplate extends Component {
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import SortableTree from 'react-sortable-tree';
 import { removeNodeAtPath, getNodeAtPath, addNodeUnderParent } from 'react-sortable-tree';
 import RaisedButton from 'material-ui/RaisedButton';
-import DynamicModal from './modal_container'
+import DynamicModal from './containers/modal_container'
 import * as OrgChartActions from '../actions/org-charts';
 import _ from 'lodash';
 
@@ -51,7 +51,7 @@ class OrgCharts extends Component {
     }
 
     // tree library seems to have helper functions for this, but they were giving me trouble.  this function might help with more sophisticated parsing needed later. still testing.
-    
+
     addNode = (item) => {   
       let {node, treeIndex, path} = item.rowInfo;
       let newNode = item.newNode;
@@ -61,6 +61,8 @@ class OrgCharts extends Component {
       } else {
         node.children.push(newNode)
       }
+
+      node.expanded = true;
 
       this.setState(this.state.treeData)
       this.props.action.updateTree(this.state.treeData)

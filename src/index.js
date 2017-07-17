@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -11,6 +12,7 @@ import initialState from './initialState'
 
 const StoreInstance = Store(initialState);
 injectTapEventPlugin()
+
 
 ReactDOM.render(
   <BrowserRouter>

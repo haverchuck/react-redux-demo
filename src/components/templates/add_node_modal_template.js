@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import TextField from '../../node_modules/material-ui/TextField';
-import SelectField from '../../node_modules/material-ui/SelectField';
-import MenuItem from '../../node_modules/material-ui/MenuItem';
+import { TextField, SelectField, MenuItem } from '../../../node_modules/material-ui';
 
 class AddNodeModalTemplate extends Component {
 
